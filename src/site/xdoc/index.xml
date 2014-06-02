@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <properties>
+        <title>Avatar module for MyDashboard</title>
+    </properties>
+    <body>
+        <section name="Avatar module for MyDashboard">
+            <subsection name="Introduction">
+                <p>This module let manage the avatar of the MyLutece user into its dashboard MyDashboard</p>
+            </subsection>
+            <subsection name="Configuration">
+                <p>Into file mydasboard-avatar.properties configure the modification URL of the avatar.</p>
+                <div class="code">
+                    <pre>
+                        mydashboard-avatar.modify.url=http://gravatar.com
+                    </pre>
+                </div>
+            </subsection>
+        </section>
+    </body>
+</document>
+

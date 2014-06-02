@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <properties>
+        <title>Module Avatar pour MyDashboard</title>
+    </properties>
+    <body>
+        <section name="Module Avatar pour MyDashboard">
+            <subsection name="Introduction">
+                <p>Ce module permet d'afficher un bloc pour administrer l'avatar de l'utilisateur MyLutece
+                    dans son tableau de bord MyDashboard</p>
+            </subsection>
+            <subsection name="Configuration">
+                <p>Dans le fichier mydasboard-avatar.properties configurer l'URL de modification de l'avatar.</p>
+                <div class="code">
+                    <pre>
+                        mydashboard-avatar.modify.url=http://gravatar.com
+                    </pre>
+                </div>
+            </subsection>
+        </section>
+    </body>
+</document>
+

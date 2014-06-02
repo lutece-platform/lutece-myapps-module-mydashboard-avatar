@@ -31,7 +31,6 @@
  *
  * License 1.0
  */
-
 package fr.paris.lutece.plugins.mydashboard.modules.avatar.web;
 
 import fr.paris.lutece.plugins.avatar.service.AvatarService;
@@ -42,11 +41,15 @@ import fr.paris.lutece.portal.service.security.SecurityService;
 import fr.paris.lutece.portal.service.template.AppTemplateService;
 import fr.paris.lutece.portal.service.util.AppPropertiesService;
 import fr.paris.lutece.util.html.HtmlTemplate;
+
+import org.apache.commons.lang.StringUtils;
+
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
-import org.apache.commons.lang.StringUtils;
+
 
 /**
  * MyDashboard Avatar Component
@@ -54,14 +57,11 @@ import org.apache.commons.lang.StringUtils;
 public class MyDashboardAvatarComponent extends MyDashboardComponent
 {
     private static final String DASHBOARD_COMPONENT_ID = "mydashboard.myDashboardAvatarComponent";
-
     private static final String MESSAGE_DASHBOARD_COMPONENT_DESCRIPTION = "avatar.mydashboard.component.description";
-
     private static final String MARK_AVATAR_URL = "avatar_url";
     private static final String MARK_AVATAR_MODIFY_URL = "avatar_modify_url";
-    private static final String PROPERTY_MODIFY_URL ="mydashboard-avatar.modify.url";
-
-    private static final String TEMPLATE_DASHBOARD_COMPONENT = "skin/plugins/mydashboard/modules/avatar/mydashboard/avatar_component.html";
+    private static final String PROPERTY_MODIFY_URL = "mydashboard-avatar.modify.url";
+    private static final String TEMPLATE_DASHBOARD_COMPONENT = "skin/plugins/mydashboard/modules/avatar/avatar_component.html";
 
     /**
      * {@inheritDoc}
@@ -69,22 +69,26 @@ public class MyDashboardAvatarComponent extends MyDashboardComponent
     @Override
     public String getDashboardData( HttpServletRequest request )
     {
-        if ( SecurityService.isAuthenticationEnable( ) )
+        if ( SecurityService.isAuthenticationEnable(  ) )
         {
-            LuteceUser user = SecurityService.getInstance( ).getRegisteredUser( request );
-            if ( ( user != null ) && ( user.getEmail() != null ) )
+            LuteceUser user = SecurityService.getInstance(  ).getRegisteredUser( request );
+
+            if ( ( user != null ) && ( user.getEmail(  ) != null ) )
             {
-                String strAvatarModifyUrl = AppPropertiesService.getProperty(PROPERTY_MODIFY_URL);
-                String strAvatarUrl = AvatarService.getAvatarUrl( user.getEmail() );
-                
-                Map<String, Object> model = new HashMap<String, Object>( );
+                String strAvatarModifyUrl = AppPropertiesService.getProperty( PROPERTY_MODIFY_URL );
+                String strAvatarUrl = AvatarService.getAvatarUrl( user.getEmail(  ) );
+
+                Map<String, Object> model = new HashMap<String, Object>(  );
                 model.put( MARK_AVATAR_URL, strAvatarUrl );
                 model.put( MARK_AVATAR_MODIFY_URL, strAvatarModifyUrl );
+
                 HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_DASHBOARD_COMPONENT,
-                        request.getLocale( ), model );
-                return template.getHtml( );
+                        request.getLocale(  ), model );
+
+                return template.getHtml(  );
             }
         }
+
         return StringUtils.EMPTY;
     }
 
@@ -92,7 +96,7 @@ public class MyDashboardAvatarComponent extends MyDashboardComponent
      * {@inheritDoc}
      */
     @Override
-    public String getComponentId( )
+    public String getComponentId(  )
     {
         return DASHBOARD_COMPONENT_ID;
     }
@@ -105,6 +109,4 @@ public class MyDashboardAvatarComponent extends MyDashboardComponent
     {
         return I18nService.getLocalizedString( MESSAGE_DASHBOARD_COMPONENT_DESCRIPTION, locale );
     }
-    
-    
 }
