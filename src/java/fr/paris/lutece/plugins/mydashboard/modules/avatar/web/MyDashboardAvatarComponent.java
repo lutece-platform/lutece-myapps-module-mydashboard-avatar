@@ -57,7 +57,7 @@ import javax.servlet.http.HttpServletRequest;
 public class MyDashboardAvatarComponent extends MyDashboardComponent
 {
     private static final String DASHBOARD_COMPONENT_ID = "mydashboard.myDashboardAvatarComponent";
-    private static final String MESSAGE_DASHBOARD_COMPONENT_DESCRIPTION = "avatar.mydashboard.component.description";
+    private static final String MESSAGE_DASHBOARD_COMPONENT_DESCRIPTION = "module.mydashboard.avatar.component.description";
     private static final String MARK_AVATAR_URL = "avatar_url";
     private static final String MARK_AVATAR_MODIFY_URL = "avatar_modify_url";
     private static final String PROPERTY_MODIFY_URL = "mydashboard-avatar.modify.url";
