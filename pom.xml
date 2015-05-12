@@ -10,7 +10,7 @@
     <groupId>fr.paris.lutece.plugins</groupId>
     <artifactId>module-mydashboard-avatar</artifactId>
     <packaging>lutece-plugin</packaging>
-    <version>1.0.1</version>
+    <version>1.0.2-SNAPSHOT</version>
     <name>Lutece mydashboard avatar module</name>
 	
     <repositories>
@@ -48,7 +48,7 @@
         <connection>scm:git:https://github.com/lutece-platform/lutece-myapps-module-mydashboard-avatar.git</connection>
         <developerConnection>scm:git:https://github.com/lutece-platform/lutece-myapps-module-mydashboard-avatar.git</developerConnection>
         <url>https://github.com/lutece-platform/lutece-myapps-module-mydashboard-avatar.git</url>
-      <tag>lutece-myapps-module-mydashboard-avatar-1.0.1</tag>
+      <tag>HEAD</tag>
   </scm>
     
 </project>
