@@ -39,8 +39,13 @@ import fr.paris.lutece.portal.service.i18n.I18nService;
 import fr.paris.lutece.portal.service.security.LuteceUser;
 import fr.paris.lutece.portal.service.security.SecurityService;
 import fr.paris.lutece.portal.service.template.AppTemplateService;
-import fr.paris.lutece.portal.service.util.AppPropertiesService;
 import fr.paris.lutece.util.html.HtmlTemplate;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
+
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -48,20 +53,27 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 
 /**
  * MyDashboard Avatar Component
  */
+@ApplicationScoped
+@Named( "mydashboard-avatar.mydashboardAvatarComponent" )
 public class MyDashboardAvatarComponent extends MyDashboardComponent
 {
+    private static final long serialVersionUID = 1L;
     private static final String DASHBOARD_COMPONENT_ID = "mydashboard.myDashboardAvatarComponent";
     private static final String MESSAGE_DASHBOARD_COMPONENT_DESCRIPTION = "module.mydashboard.avatar.component.description";
     private static final String MARK_AVATAR_URL = "avatar_url";
     private static final String MARK_AVATAR_MODIFY_URL = "avatar_modify_url";
     private static final String PROPERTY_MODIFY_URL = "mydashboard-avatar.modify.url";
     private static final String TEMPLATE_DASHBOARD_COMPONENT = "skin/plugins/mydashboard/modules/avatar/avatar_component.html";
+
+    @Inject
+    @ConfigProperty( name = PROPERTY_MODIFY_URL, defaultValue = "http://gravatar.com" )
+    private String _strAvatarModifyUrl;
 
     /**
      * {@inheritDoc}
@@ -75,12 +87,11 @@ public class MyDashboardAvatarComponent extends MyDashboardComponent
 
             if ( ( user != null ) && ( user.getEmail(  ) != null ) )
             {
-                String strAvatarModifyUrl = AppPropertiesService.getProperty( PROPERTY_MODIFY_URL );
                 String strAvatarUrl = AvatarService.getAvatarUrl( user.getEmail(  ) );
 
                 Map<String, Object> model = new HashMap<String, Object>(  );
                 model.put( MARK_AVATAR_URL, strAvatarUrl );
-                model.put( MARK_AVATAR_MODIFY_URL, strAvatarModifyUrl );
+                model.put( MARK_AVATAR_MODIFY_URL, _strAvatarModifyUrl );
 
                 HtmlTemplate template = AppTemplateService.getTemplate( TEMPLATE_DASHBOARD_COMPONENT,
                         request.getLocale(  ), model );

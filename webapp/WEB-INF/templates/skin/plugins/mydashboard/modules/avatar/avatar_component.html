@@ -1,22 +1,6 @@
-<#--
-<legend>#i18n{module.mydashboard.avatar.component.description}</legend>
-<div>
-    <img class="avatar avatar-large" src="${avatar_url}" alt="Avatar" title="Avatar" />
-   
-    <a href="${avatar_modify_url}" class="btn btn-small btn-primary">
-        <i class="icon-white icon-edit">&nbsp;</i>&nbsp;#i18n{portal.util.labelModify}
-    </a>
-</div>
--->
-<div class="col d-flex align-items-start">
-    <div class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-        <img class="avatar img-fluid" src="${avatar_url}" alt="Avatar" title="Avatar" />
-    </div>
-    <div>
-        <h3 class="fs-2 text-body-emphasis">#i18n{module.mydashboard.avatar.component.description}</h3>
-        <p>Gérer mon avatar directement sur le site Gravatar, gravatar.com.</p>
-        <a href="${avatar_modify_url}" class="btn btn-primary" target="_blank" title="#i18n{portal.util.labelModify} #i18n{module.mydashboard.avatar.component.description} [#i18n{portal.site.portal_footer.newWindow}]">
-            <i class="ti ti-edit"></i> #i18n{portal.util.labelModify}
-        </a>
-    </div>
-</div>
+<@cCard class='secondary' title='#i18n{module.mydashboard.avatar.component.description}' img='${avatar_url!}' imgAlt='#i18n{module.mydashboard.avatar.component.imgAlt}' orientation='h' vcols=[2,10] hoverEffect=false>
+	<@cText>#i18n{module.mydashboard.avatar.component.help}</@cText>
+	<@cLink href='${avatar_modify_url!}' label='#i18n{portal.util.labelModify}' title='#i18n{portal.util.labelModify} #i18n{module.mydashboard.avatar.component.description}' target='_blank' class='btn btn-primary' nestedPos='before'>
+		<@cIcon name='edit' />
+	</@cLink>
+</@cCard>
